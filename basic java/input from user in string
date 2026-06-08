@@ -1,0 +1,18 @@
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+public class Main
+{
+	public static void main (String[] args) throws java.lang.Exception
+	{
+		//your code here
+		Scanner scn = new Scanner(System.in);
+		String str1 = scn.next();
+		String str2 = scn.nextLine();
+		System.out.println("the word is "+str1  +  str2); 
+	}
+}
+
+OUTPUT
+the word is hii everyone how are you

@@ -1,0 +1,50 @@
+import java.util.*;
+
+public class Main {
+
+  public static void main(String[] args) throws Throwable {
+    //Write code here and print output
+    Scanner scn = new Scanner(System.in);
+    int a = scn.nextInt();
+    int b = scn.nextInt();
+
+    System.out.println(a+b);
+    System.out.println(a-b);
+    System.out.println(a*b);
+    System.out.println(a/b);
+    System.out.println(a%b);
+  }
+}
+
+
+
+QUESTION
+
+The third line of the output should contain the product of A and B.
+
+The fourth line of the output should contain the quotient of A divided by B.
+
+The fifth line of the output should contain the remainder of A modulus by B.
+
+Example 1
+Input:
+
+8 3
+Output:
+
+11
+5
+24
+2
+2
+Example 2
+Input:
+
+10 2
+Output:
+
+12
+8
+20
+5
+0

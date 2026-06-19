@@ -1,0 +1,87 @@
+import java.util.*;
+
+public class Main {
+
+  public static void main(String[] args) throws Exception {
+    Scanner scn = new Scanner (System.in);
+    int n = scn.nextInt();
+    int arr[] = new int[n];
+    for(int i =0;i<n;i++){
+     arr[i]  = scn.nextInt();  
+    }
+    printbuilding(arr);
+  }
+  public static int gettmaxvalue(int arr[]){
+    int max = Integer.MIN_VALUE;
+    for(int i =0;i<arr.length;i++){
+      if(arr[i] > max){
+        max = arr[i];
+      }
+    }
+    return max;
+
+  }
+  public static void printbuilding(int arr[]){
+    int maxvalue=gettmaxvalue(arr);
+    int currentval = maxvalue;
+    while(currentval > 0){
+      for(int i = 0; i< arr.length;i++){
+        if(arr[i] >= currentval){
+          System.out.print("*\t");
+        }else{
+          System.out.print("\t");
+        }
+      }
+      System.out.println();
+      currentval--;
+    }
+
+  }
+}
+
+
+QUESTION
+You have given a number n, representing the size of array arr.
+
+You are required to print a building representing value of arr using *.
+
+Input Format
+First line consists of an integer n
+
+Second line consists of n spaced integers, representing elements of arr
+
+Output Format
+Output the height of the building represented by the values of array arr using *
+
+Example 1
+Input
+
+7
+9 3 7 6 2 0 4
+Output
+
+*
+*
+*               *
+*               *       *
+*               *       *
+*               *       *                       *
+*       *       *       *                       *
+*       *       *       *       *               *
+*       *       *       *       *               *
+Explanation
+
+Number of stars in each column represents the value of that index of array arr which are tab seprated
+
+Example 2
+Input
+
+5
+1 2 3 4 5
+Output
+
+                                *
+                        *       *
+                *       *       *
+        *       *       *       *
+*       *       *       *       *

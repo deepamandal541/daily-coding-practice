@@ -1,0 +1,21 @@
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+public class Main
+{
+	public static void main (String[] args) throws java.lang.Exception
+	{
+		//your code here
+		int arr[] = new int[5];
+		arr[0]=10;
+		arr[1]=20;
+		arr[2]=30;
+		arr[3]=40;
+		arr[4]=50;
+		int total = arr[0]+arr[1]+arr[2]+arr[3]+arr[4];
+		System.out.println(total);
+
+		
+	}
+}

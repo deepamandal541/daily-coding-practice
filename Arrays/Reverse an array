@@ -1,0 +1,58 @@
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+public class Main
+{
+	public static void main (String[] args) throws java.lang.Exception
+	{f
+		//your code here
+		Scanner scn  = new Scanner(System.in);
+		int n  = scn. nextInt();
+		int arr[] = new int[n];
+		for( int i = 0;i<n;i++){
+		arr[i] = scn.nextInt();
+	
+		}
+
+
+	for(int i=arr.length-1; i>=0; i--) {
+    System.out.print(arr[i] + " ");
+}
+}
+}
+
+
+	QUESTION
+You are given an array arr of length n. You have to come up with an in-place solution.
+
+Input Format
+The first line of input contains an integer n, size of the array.
+
+The next line contains n space-separated integers denoting the elements of the array.
+
+Output Format
+Printing is handled by the main function you just have to come up with an inplace solution.
+
+Example 1:
+Input
+
+4
+1 3 5 7
+Output
+
+7 5 3 1
+Explanation
+
+We have array = [1 3 5 7].
+
+Print the array from the ending. The reversed array is [7 5 3 1]
+
+Example 2:
+Input
+
+7
+0 0 1 1 0 2 3
+Output
+
+3 2 0 1 1 0 0

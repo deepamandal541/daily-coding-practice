@@ -1,0 +1,31 @@
+ublic class ClassNameHere {
+   public static void main(String[] args) {
+    //  f1(1);
+     // f(1);
+    //  printDecreasing(3);
+      printIncreasing(3);
+   }
+   public static void printIncreasing(int n) {
+      if(n < 1) return;
+      printIncreasing(n - 1);
+      System.out.println(n);
+   }
+   public static void f(int n) {
+      if(n > 2) return;
+      System.out.println(n);
+      f(n + 1);
+   }
+   public static void f1(int n) {
+      if(n > 2) return;
+      System.out.println(n);
+      f2(n + 1);
+   }
+   public static void f2(int n) {
+      if(n > 2) return;
+      System.out.println(n);
+      f3(n + 1);
+   }
+   public static void f3(int n) {
+      if(n > 2) return;
+   }
+}

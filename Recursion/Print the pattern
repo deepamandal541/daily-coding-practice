@@ -1,0 +1,82 @@
+import java.io.*;
+import java.util.*;
+
+class Main
+{
+
+	public static void solve(int n)
+    {
+        // Your code here
+        if(n == 0){
+            return;
+        }
+        solve(n-1);
+        System.out.print("* ");    
+    }
+    static void star(int m){
+    if(m==0){
+    return ;
+    }
+    star(m-1);
+
+
+    solve(m);
+    System.out.println();
+}
+
+	
+    public static void main(String args[])throws IOException
+    {
+        Scanner sc = new Scanner(System.in);
+        
+        int n=sc.nextInt();
+		star(n);
+
+    }
+}
+
+//QUESTION
+
+Using recursion, print the given pattern.
+
+Input Format
+First line contains integer n, representing rows of the given pattern
+
+Output Format
+Display the given pattern.
+
+Example 1
+Input
+
+5
+
+Output
+
+
+* 
+* * 
+* * * 
+* * * * 
+* * * * * 
+
+
+Explanation:
+
+The number of rows given is 5.
+
+Example 2
+Input
+
+3
+
+Output
+
+
+* 
+* * 
+* * * 
+
+Explanation:
+
+The number of rows given is 3.
+

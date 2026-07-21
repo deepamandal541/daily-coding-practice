@@ -1,0 +1,156 @@
+Last Occurence Index
+
+
+import java.util.Scanner;
+class Main {
+	public static void main(String[] args) {
+		Scanner s = new Scanner(System.in);
+        int N = s.nextInt();
+		int[] A = new int[N];
+		for(int i = 0; i < N; i++){
+			A[i] = s.nextInt();
+		}
+		int T = s.nextInt();
+		System.out.println(lastIndex(A, T, 0));
+	}
+
+	static int lastIndex(int arr[],int target,int srtIndex)
+	{
+		//Write your code here
+		if(srtIndex == arr.length)
+		return -1;
+		int index = lastIndex(arr,target,srtIndex+1);
+		if(index != -1)
+		return index;
+
+		if(arr[srtIndex] == target)
+		return srtIndex;
+
+		return-1;
+	}
+	
+}
+
+
+//Array11
+
+import java.util.*;
+public class Main {
+    static int array11(int[] nums, int index) {
+        //Write your code here
+        if(index == nums.length){
+            return 0;
+        }
+            
+             int recall = array11(nums,index+1);
+             int count =  0;
+ if(nums[index] == 11){
+    count++;
+
+ }
+
+   return count+recall;          
+        
+    }
+
+    public static void main(String[] args) throws Throwable {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        int[] arr = new int[n];
+        for(int i=0;i<n;i++) {
+            arr[i] = sc.nextInt();
+        }
+        System.out.println(array11(arr, 0));
+    }
+}
+
+
+//Count 1
+
+
+import java.util.*;
+public class Main {
+	static int count1(int n) {
+        //Write code here
+        if(n==0){
+            return 0;
+        }
+        int count = 0;
+        if(n%10 == 1){
+        count++;
+        }
+        int recall = count1(n/10);
+        return count+recall;
+        }
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        System.out.println(count1(n));
+        sc.close();
+    }
+
+    
+}
+//Smallest Number in an Array using Recursion
+
+
+import java.util.*;
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        int[] arr = new int[n];
+        for (int i = 0; i < n; i++)
+            arr[i] = sc.nextInt();
+        sc.close();
+        System.out.println(recforMin(arr, 0));
+    }
+
+	public static int recforMin(int[] arr, int idx) {
+        //Write your code here
+        if (idx == arr.length - 1) {
+        return arr[idx];
+    }
+
+    // Recursive call
+    int recall = recforMin(arr, idx + 1);
+
+    // Compare current element with minimum of remaining array
+    if (arr[idx] < recall) {
+        return arr[idx];
+    }
+
+    return recall;
+    }
+}
+
+
+
+// 
+Print Reverse Array Recursively
+
+
+import java.util.*;
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        int[] arr = new int[n];
+
+        for(int i = 0; i < n; i++)
+            arr[i] = sc.nextInt();
+        PrintReverseArray(arr, n);
+    }
+
+	public static void PrintReverseArray(int[] arr, int n) {
+        //Write your code
+        if(n==0){
+            return;
+        }
+        System.out.print(arr[n-1]+" ");
+        PrintReverseArray(arr,n-1);
+       // System.out.println(arr[n-1]);
+        
+    }
+
+  }

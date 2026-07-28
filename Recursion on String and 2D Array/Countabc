@@ -1,0 +1,72 @@
+import java.util.*;
+
+public class Main {
+    static int CountABC(String str, int idx,int asf) {
+        // Write your code here
+        if(idx > str.length()-3){
+            
+            return asf;
+        }
+        String sub = str.substring(idx ,idx+3); 
+        if(sub.equals("abc")||sub.equals("aba")){
+           return CountABC(str,idx+1,asf+1);
+        }else{
+           return CountABC(str,idx+1,asf);
+        }
+        
+        
+    }
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        String s = sc.nextLine();
+        //System.out.println(CountABC(s, 0,0));
+int result = CountABC(s,0,0);
+System.out.println(result);
+    }
+}
+
+//
+QUESTION
+
+Count recursively the total number of "abc" and "aba" substrings that appear in the given string.
+
+countAbc("abc") → 1
+
+countAbc("abcxxabc") → 2
+
+countAbc("abaxxaba") → 2
+
+Input Format
+Only line contains the string in which we have to count "abc" and "aba".
+
+Output Format
+Print the number of "abc" and "aba" in string.
+
+Example 1
+Input
+
+abcxxabc
+Output
+
+2
+Explanation
+
+There are 2 abc from 0 -> 2 and from 5 -> 7
+
+Example 2
+Input
+
+abaxxaba
+Output
+
+2
+Explanation
+
+There are 2 aba from 0 -> 2 and from 5 -> 7
+
+Constraints
+1 <= s.size() <= 1000
+Topics
+Recursion
+Strings

@@ -1,0 +1,182 @@
+0PPS
+
+1 . Opps is stand for (object oriented programming language)
+
+ 2. What  you mean by objects oriented programming ?
+   
+     >  To represent real life entities in code
+
+  3. Why we need  oops ?
+
+      >it increase the code readability
+      > increase code reuseability 
+      > help in error handling and exception handling
+       >  Structures code into logical units (classes and objects)
+       >Keeps related data and methods together (encapsulation)
+       >Makes code modular, reusable and scalable
+       >Prevents unauthorized access to data
+        >Follows the DRY (Don’t Repeat Yourself) principle
+
+
+4.whta is class ?
+
+  > Object oriented programming is representing real world entity in code.
+
+  > To represented real world entities in code we need to create an structure or blueprint or module of the entity
+
+  > In blue print we are having the structure or frame of the building  and future that the building can have > with the help of  blueprint we can           create as many building we want
+  >class is like blueprint  or module with the help of class we can create many object we want
+  > blueprint is class and building is object
+
+  # Variable which we are defining inside the class are called as property
+  # Function which we defining inside the class are known as behaviours or method
+ 
+
+
+5.Why is constrictor ?
+
+
+A constructor in Java is a special method that is used to initialize objects when an object of a class is created.
+🔹 Key Points about Constructor
+1. Constructor name must be the same as the class name
+2. It does not have a return type (not even void)
+3. It is automatically called when an object is created
+4. Used to initialize variables
+5. Can be overloaded (multiple constructors in a class)
+
+#  A contractor is special function  present inside the class 
+
+
+✅ No-Argument Constructor (Default Constructor)
+
+A no-argument constructor is a constructor that does not take any parameters.
+🔹 Example:
+
+class Student {
+    Student() {
+        System.out.println("No-argument constructor called");
+    }
+
+    public static void main(String[] args) {
+        Student s = new Student();
+    }
+}
+✅ Output:
+
+No-argument constructor called
+
+✔️ Use:
+* Sets default values
+* Runs automatically when object is created
+* Easy initialization
+
+✅ Argument Constructor (Parameterized Constructor)
+
+A parameterized constructor is a constructor that takes arguments to initialize values.
+🔹 Example:
+
+class Student {
+    int id;
+
+    Student(int x) {
+        id = x;
+    }
+
+    public static void main(String[] args) {
+        Student s = new Student(101);
+        System.out.println(s.id);
+    }
+}
+✅ Output:
+
+101
+
+✔️ Use:
+* Pass values at runtime
+* Initialize object with different data
+
+🔍 Difference Table
+No-Argument Constructor	Argument Constructor
+No parameters	Takes parameters
+Default values	User-defined values
+Easy to use	More flexible
+Student()	Student(int a)
+⭐ Example with Both
+
+class Demo {
+    Demo() {
+        System.out.println("No argument");
+    }
+
+    Demo(int a) {
+        System.out.println("Argument: " + a);
+    }
+
+
+    public static void main(String[] args) {
+        Demo d1 = new Demo();
+        Demo d2 = new Demo(10);
+    }
+}
+
+If you want, I can also explain this for exams (5 marks / 10 marks) or give real-life examples 👍
+
+
+ 6.Access modifier
+
+  1.public 
+  2.protected
+  3.Private
+   4.Default
+
+	Variable	Function	Class
+Public 	yes	yes	yes
+Protected	Yes 	yes	No
+Private 			
+Default	Yes 	yes	Yes
+
+>public : if i m using public access modifier then I can access the class or variable or function through our the project
+	
+>Default : if we are using the default access modifier then we can access the class ,function, variable within the package itself only it will        won’t be accessible outside the package.	
+
+>protected:
+
+>private : 
+
+
+7.Inheritance 
+> in inheritance child class can access the parent class method and properties
+Ex: car parent and Mercedes child
+
+
+8.Multilevel inheritance
+> in multilevel inheritance  is like(grand parents > parents >child)
+                                                 RBI.               >SBI.           >SBI online banking
+
+
+# super keyword is used to. call the properties and method of parent class
+
+
+
+8 .DP(dynamic programming)
+
+>Dp is a problem solving technique in which the problem is breaking down into small subproblem an result id store into one place(in array)
+>it reduce the repeated calculation
+>reduce the time complexity
+>Used in optimization problems > Makes recursive solutions faster
+
+# dp of (i) will represent the no of ways from ith position to nth  position
+
+
+✅ Types of Dynamic Programming
+
+1️⃣ Top-Down (Memoization)
+   > When we recursively cutting the repeated call is known as memorisation
+* Uses recursion
+* Stores results in array
+* 
+2️⃣ Bottom-Up (Tabulation)
+ >when we use loop to cut the repeated call is known as tabulation
+* Uses loops
+* No recursion
+* More efficient

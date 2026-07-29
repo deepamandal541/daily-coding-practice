@@ -1,0 +1,62 @@
+import java.util.*; 
+
+class Student{
+
+    // write your code here.
+    public static void greet(){
+    System.out.println("Hello");
+    }
+    public static void greet(String name){
+        System.out.println("Hello"+" "+ name);
+    }
+
+}
+
+public class Main{ 
+
+     public static void main(String[] args){
+      
+        Student.greet();
+        Student.greet("Sansa");
+    }
+}
+
+
+//QUESTION
+
+
+Overload the greet method to just print “Hello” if not given any parameters. It should print “Hello” and then “Hello Sansa”.
+
+Complete the given Student''s class :
+
+class Student{
+
+
+    public static void greet(String name){
+        System.out.println("Hello" + " " + name);
+    }
+
+}
+
+Task :
+
+Complete the code in your editor by writing some code so that it prints the required output.
+
+Input Format
+There is no input.
+
+Output Format
+When executed, your completed code should print the following:
+
+Hello
+Hello Sansa
+
+Example 1
+Output
+
+
+Hello
+Hello Sansa
+
+Topics
+OOP

@@ -1,0 +1,196 @@
+import java.util.Scanner;
+
+class ComplexNumbers {
+
+	  // write your code here
+	  int real;
+int imaginary;
+
+ComplexNumbers(int real, int imaginary) {
+    this.real = real;
+    this.imaginary = imaginary;
+}
+
+void plus(ComplexNumbers c) {
+    this.real = this.real + c.real;
+    this.imaginary = this.imaginary + c.imaginary;
+}
+
+void multiply(ComplexNumbers c) {
+    int newReal = (this.real * c.real) - (this.imaginary * c.imaginary);
+    int newImaginary = (this.real * c.imaginary) + (this.imaginary * c.real);
+
+    this.real = newReal;
+    this.imaginary = newImaginary;
+}
+
+void print() {
+    System.out.println(this.real + " + i" + this.imaginary);
+}
+
+}
+
+class Main {
+
+	public static void main(String args[]) {
+
+		Scanner sc = new Scanner(System.in);
+		int real1, imaginary1, real2, imaginary2;
+		real1 = sc.nextInt();
+		imaginary1 = sc.nextInt();
+		real2 = sc.nextInt();
+		imaginary2 = sc.nextInt();
+
+		ComplexNumbers c1 = new ComplexNumbers(real1, imaginary1);
+		ComplexNumbers c2 = new ComplexNumbers(real2, imaginary2);
+
+		int choice = sc.nextInt();
+		if (choice == 1) {
+			c1.plus(c2);
+			c1.print();
+		} else if (choice == 2) {
+			c1.multiply(c2);
+			c1.print();
+		}
+
+	}
+}
+
+
+//QUESTION
+
+import java.util.Scanner;
+
+class ComplexNumbers {
+
+	  // write your code here
+	  int real;
+int imaginary;
+
+ComplexNumbers(int real, int imaginary) {
+    this.real = real;
+    this.imaginary = imaginary;
+}
+
+void plus(ComplexNumbers c) {
+    this.real = this.real + c.real;
+    this.imaginary = this.imaginary + c.imaginary;
+}
+
+void multiply(ComplexNumbers c) {
+    int newReal = (this.real * c.real) - (this.imaginary * c.imaginary);
+    int newImaginary = (this.real * c.imaginary) + (this.imaginary * c.real);
+
+    this.real = newReal;
+    this.imaginary = newImaginary;
+}
+
+void print() {
+    System.out.println(this.real + " + i" + this.imaginary);
+}
+
+}
+
+class Main {
+
+	public static void main(String args[]) {
+
+		Scanner sc = new Scanner(System.in);
+		int real1, imaginary1, real2, imaginary2;
+		real1 = sc.nextInt();
+		imaginary1 = sc.nextInt();
+		real2 = sc.nextInt();
+		imaginary2 = sc.nextInt();
+
+		ComplexNumbers c1 = new ComplexNumbers(real1, imaginary1);
+		ComplexNumbers c2 = new ComplexNumbers(real2, imaginary2);
+
+		int choice = sc.nextInt();
+		if (choice == 1) {
+			c1.plus(c2);
+			c1.print();
+		} else if (choice == 2) {
+			c1.multiply(c2);
+			c1.print();
+		}
+
+	}
+}
+
+
+// QUESTION
+
+A Complex Number class contains two data members : one is the real part and the other is imaginary .
+
+Implement the complex Numbers class that contains the following functions-
+
+Constructor- You need to create the appropriate constructor.
+
+Plus- This function adds two given complex numbers and updates the first complex number.
+
+e.g.
+
+  if c1 = 4+i5 and c2 = 3+i1
+  c1.plus(c2) results in : 
+  c1 = 7+i6 and c2 = 3+i1
+
+Multiply- This function multiplies two given complex numbers and updates the first complex number.
+
+e.g.
+
+   if c1 = 4+i5 and c2 = 1+i2
+   c1.multiply(c2) results in : 
+   c1 = -6+i13 and c2 = 1 +i2
+
+Print- This function prints the given complex number in the following format:
+
+ a + ib
+
+Note:- Input has been handled in the driver code. You need to complete ComplexNumbers() Class.
+
+Input Format
+The first line of the input contains two integers - the real and imaginary part of 1st complex number.
+
+The second line of the input contains two integers - the real and imaginary part of 2nd complex number.
+
+The third line of the input contains an integer representing choice ,
+
+Choice = 1 , Plus
+Choice = 2 , Multiply
+Output Format
+The only line of the output prints the complex number in the given format.
+
+Example 1
+Input
+
+4 5
+6 7
+1
+
+Output
+
+10 + i12
+
+Explanation
+
+c1 = 4 + i5 
+c2 = 6 + i7 
+c3 = c1 + c2 => 10+i12
+
+Example 2
+Input
+
+4 5
+6 7
+2
+
+Output
+
+-11 + i58
+
+Explanation
+
+c1 = 4 + i5 
+c2 = 6 + i7 
+c3 = c1 * c2 => -11 + i58
+

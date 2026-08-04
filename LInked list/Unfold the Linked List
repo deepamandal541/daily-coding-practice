@@ -1,0 +1,129 @@
+import java.io.*;
+import java.util.*;
+ 
+class Node{
+    int data;
+    Node next;
+    Node(int data){
+        this.data = data;
+        next = null;
+    }
+}
+class LinkedList{
+    Node head;
+    void add(int data ){
+        Node new_node = new Node(data);
+        if(head == null){
+            head = new_node;
+            return;
+        }
+        Node current = head;
+        while(current.next !=null){
+            current = current.next;
+        }
+        current.next = new_node;
+    }
+}
+
+class Solution {
+    static void unfold(Node head)
+    {
+     // Your code here
+     //seperate the the list into two 
+     //reverse the second list
+     //add the second list with first half
+
+
+     // base case
+     if(head == null || head.next == null){
+        return ;
+     }
+     Node secondhead = head.next;
+     Node tempA = head;
+     Node tempB = secondhead;
+     while(tempA != null || tempB != null){
+        if(tempA != null && tempA.next != null){
+            tempA.next = tempA.next.next;
+        }
+        if(tempB != null && tempB.next != null){
+            tempB.next = tempB.next.next;
+        }
+        if(tempA != null){
+            tempA = tempA.next;
+        }
+        if(tempB != null){
+            tempB = tempB.next;
+        }
+
+     }
+     //reverse
+     Node prev = null;
+     Node nxt = null;
+     while(secondhead != null){
+        nxt = secondhead.next;
+        secondhead.next = prev;
+        prev = secondhead;
+        secondhead = nxt;
+
+     }
+     Node tail = head;
+     while(tail.next != null){
+        tail = tail.next;
+     }
+     tail.next = prev;
+
+    }
+}
+public class Main {
+    
+    public static void main(String args[]) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        LinkedList l1= new LinkedList();
+        for(int i=0;i<n;i++){
+            l1.add(sc.nextInt());
+        }
+        Solution Ob = new Solution();
+        Ob.unfold(l1.head);
+        while(l1.head != null){
+            System.out.print(l1.head.data+" ");
+            l1.head = l1.head.next;
+        }
+    }
+}
+
+// QUESTION
+
+A linked list L0 -> L1 -> L2 -> ….. -> LN can be folded as L0 -> LN -> L1 -> LN – 1 -> L2 -> ….. and so on.
+
+Given a folded linked list, the task is to unfold and print the original linked list.
+
+Input Format
+First line contains n, number of nodes in the linked list.
+
+Second line contains the nodes of the linked list.
+
+Output Format
+Print the unfolded linked list from the folded linked list given.
+
+Example 1
+Input
+
+6
+1 6 2 5 3 4 
+Output
+
+1 2 3 4 5 6
+Example 2
+Input
+
+5
+1 5 2 4 3 
+Output
+
+1 2 3 4 5
+Constraints
+1 <= n <= 1000
+
+Topics
+Linked lists

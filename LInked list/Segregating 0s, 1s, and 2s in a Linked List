@@ -1,0 +1,128 @@
+
+import java.io.*;
+import java.util.*;
+ 
+class Node{
+    int data;
+    Node next;
+    Node(int data){
+        this.data = data;
+        next = null;
+    }
+}
+class LinkedList{
+    Node head;
+    void add(int data ){
+        Node new_node = new Node(data);
+        if(head == null){
+            head = new_node;
+            return;
+        }
+        Node current = head;
+        while(current.next !=null){
+            current = current.next;
+        }
+        current.next = new_node;
+    }
+}
+
+class Solution {
+    static void unfold(Node head)
+    {
+     // Your code here
+     int count0 = 0;
+     int count1 =0;
+     int count2 = 0;
+     Node temp = head;
+     while( temp != null){
+        if( temp.data == 0){
+            count0++;
+        }else if(temp.data == 1){
+            count1++;
+        }else{
+            count2++;
+        }
+        temp = temp.next;
+
+        
+     }
+     temp = head;
+     while(count0 > 0){
+        temp.data = 0;
+        temp = temp.next;
+        count0--;
+     }
+     while(count1 > 0){
+        temp.data = 1;
+        temp = temp.next;
+        count1--;
+     }
+     while(count2 > 0){
+        temp.data = 2;
+        temp = temp.next;
+        count2--;
+     }
+     
+
+    
+    }
+    
+}
+public class Main {
+    
+    public static void main(String args[]) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        LinkedList l1= new LinkedList();
+        for(int i=0;i<n;i++){
+            l1.add(sc.nextInt());
+        }
+        Solution Ob = new Solution();
+        Ob.unfold(l1.head);
+
+//added to print the output
+        Node temp = l1.head;
+        while (temp != null) {
+            System.out.print(temp.data + " ");
+            temp = temp.next;
+        }
+    }
+}f
+
+// QUESTION
+
+The task is to rearrange the elements of a linked list such that all the 0s are at the beginning of the list, followed by the 1s, and then the 2s.
+
+Input Format
+First line contains n, number of nodes in the linked list.
+
+Second line contains the nodes of the linked list.
+
+Output Format
+Print the reorganized linked list.
+
+Example 1
+Input
+
+10
+0 1 1 1 2 0 1 0 1 1
+Output
+
+0 0 0 1 1 1 1 1 1 2
+Example 2
+Input
+
+5
+0 1 2 0 1
+Output
+
+0 0 1 1 2
+Constraints
+1 <= n <= 1000
+
+Topics
+Linked lists
+Companies
+Microsoft
+MakeMyTrip
+Amazon

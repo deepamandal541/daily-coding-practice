@@ -1,0 +1,202 @@
+import java.util.*;
+
+// Java program for flattening a Linked List
+public class Main {
+
+  /* Linked list Node*/
+  static class Node {
+
+    int data;
+    Node right, down;
+
+    Node(int data) {
+      this.data = data;
+      right = null;
+      down = null;
+    }
+  }
+
+  static Node flatten(Node root) {
+    // your code here
+// base case
+    if (root == null || root.right == null) {
+      return root;
+    }
+
+    // same as your: Node nxt = root.next;
+    Node nxt = root.right;
+    root.right = null;
+
+    Node h1 = flatten(nxt);
+    Node h2 = root;
+
+    Node head = new Node(-1); // dummy node
+    Node temp = head;
+
+    Node p1 = h1;
+    Node p2 = h2;
+
+    while (p1 != null && p2 != null) {
+      if (p1.data < p2.data) {
+        temp.down = p1;
+        p1 = p1.down;
+      } else {
+        temp.down = p2;
+        p2 = p2.down;
+      }
+      temp = temp.down;
+      temp.right = null; // IMPORTANT
+    }
+if (p1 != null) temp.down = p1;
+    if (p2 != null) temp.down = p2;
+
+    return head.down; // not dummy
+  }
+
+  static void printList(Node head) {
+    // write your code here
+    Node curr = head;
+    while (curr != null) {
+      System.out.print(curr.data + " ");
+      curr = curr.down;
+    }
+    System.out.println();
+  }
+  public static boolean isCorrect(Node claim) {
+    if (claim.right != null) return false;
+    Node copy = claim;
+    while (copy.down != null) {
+      if (copy.down.data < copy.data) return false;
+      copy = copy.down;
+    }
+    return true;
+  }
+
+  // Driver's code
+  public static void main(String args[]) {
+    Scanner sc = new Scanner(System.in);
+    int n = sc.nextInt();
+    Node ll = new Node(-1), prev1 = null, head = ll;
+    for (int i = 0; i < n; i++) {
+      int k = sc.nextInt();
+      Node prev2 = null, copy = ll;
+      while (k-- != 0) {
+        int val = sc.nextInt();
+        copy.data = val;
+        copy.down = new Node(-1);
+        prev2 = copy;
+        copy = copy.down;
+      }
+      prev2.down = null;
+      ll.right = new Node(-1);
+      prev1 = ll;
+      ll = ll.right;
+    }
+    sc.close();
+    prev1.right = null;
+    Node flattenedNode = flatten(head);
+    printList(flattenedNode);
+    if (isCorrect(flattenedNode)) System.out.println(
+      "yes"
+    ); else System.out.println("no");
+  }
+}
+
+// Given a Linked List of size N, where every node represents a sub-linked-list and contains two pointers:
+
+Pointer to next node in the main list (we call it ‘right’ pointer in the code below)
+Pointer to a linked list where this node is headed (we call it the ‘down’ pointer in the code below).
+Each of the sub-linked-list is in sorted order. Flatten the Link List such that all the nodes appear in a single level while maintaining the sorted order.
+
+Note: The flattened list will be printed using the down pointer instead of the right pointer.
+
+For more clarity have a look at the printList() function in the driver code.
+
+Input Format
+First line consits of an integer n, the number of groups of chains in the linked list.
+
+For the next n lines, each input consists of an integer k, followed by k nodes.
+
+Output Format
+Just flatten the linked list and print it and the compiler will print 'yes' if your output is correct else it prints 'no'
+
+Example 1
+Input
+
+
+4
+4
+5 7 8 30
+2
+10 20
+3
+19 22 50
+4
+28 35 40 45
+Output
+
+
+5 7 8 10 19 20 22 28 30 35 40 45 50
+yes
+Explanation
+
+
+The resultant linked list has every node in a single level. 
+
+Given LinkedList : 
+
+5-->10-->19-->28
+|    |    |    |
+7   20   22   35
+|         |    |
+8        50   40
+|              |
+30            45
+
+Sorted LinkedList  : 5 7 8 10 19 20 22 28 30 35 40 45 50  
+Example 2
+Input
+
+
+4
+4
+5 7 8 30
+1
+10
+3
+19 22 50
+1
+28
+Output
+
+
+5 7 8 10 19 22 28 30 50
+yes 
+Explanation
+
+
+The resultant linked list has every node in a single level.
+
+Given LinkedList : 
+
+5-->10-->19-->28
+|         |    
+7        22   
+|         |    
+8        50   
+|              
+30            
+
+Sorted LinkedList  : 5 7 8 10 19 22 28 30 50 
+Constraints
+0 <= n <= 50
+
+1 <= Ki <= 20
+
+1 <= Element of linked list <= 10^3
+
+Topics
+Recursion
+Linked lists
+Companies
+24*7 Innovation Labs

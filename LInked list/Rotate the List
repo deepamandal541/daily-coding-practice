@@ -1,0 +1,133 @@
+import java.io.*;
+import java.util.*;
+ 
+class Node{
+    int data;
+    Node next;
+    Node(int data){
+        this.data = data;
+        next = null;
+    }
+}
+class LinkedList{
+    Node head;
+    void add(int data ){
+        Node new_node = new Node(data);
+        if(head == null){
+            head = new_node;
+            return;
+        }
+        Node current = head;
+        while(current.next !=null){
+            current = current.next;
+        }
+        current.next = new_node;
+    }
+    void print() {
+        Node curr = head;
+        while (curr != null) {
+            System.out.print(curr.data + " ");
+            curr = curr.next;
+}
+    }
+}
+
+class Solution {
+    
+    static Node rotateRight(Node head, int n) {
+    // Your code here
+    
+    if (head == null || head.next == null || n == 0)
+            return head;
+
+        // find size of linked list
+        Node temp = head;
+        int length = 1;
+
+        while (temp.next != null) {
+            temp = temp.next;
+            length++;
+        }
+
+        // make circular
+        temp.next = head;
+
+        int k = n % length;
+        int steps = length - k;
+
+        Node newTail = temp;
+        while (steps-- > 0) {
+            newTail = newTail.next;
+        }
+
+        Node newHead = newTail.next;
+        newTail.next = null;
+
+        return newHead;
+    }
+}
+    
+
+
+public class Main {
+
+    public static void main(String args[]) {
+        Scanner sc = new Scanner(System.in);
+
+        int n = sc.nextInt();
+        LinkedList l1 = new LinkedList();
+
+        for (int i = 0; i < n; i++) {
+            l1.add(sc.nextInt());
+        }
+
+        int k = sc.nextInt();
+
+        l1.head =  Solution.rotateRight(l1.head, k);
+
+        l1.print();
+    }
+}
+
+
+//QUESTION
+
+Given the head of a linked list, rotate the list to the right by k places.
+
+Input Format
+First line consists of an integer n, the number of nodes in the linked list.
+
+The next line contains n spaced integers, representing the linked list.
+
+Last line contains k.
+
+Output Format
+Print the rotated linked list.
+
+Example 1
+Input
+
+10
+1 2 3 4 5 6 7 8 9 10
+3
+Output
+
+8 9 10 1 2 3 4 5 6 7
+Example 2
+Input
+
+5
+1 2 3 4 5
+2
+Output
+
+4 5 1 2 3
+Constraints
+0 <= n <= 1000
+
+Topics
+2-Pointers
+Linked lists
+Companies
+Adobe
+Goldman Sachs

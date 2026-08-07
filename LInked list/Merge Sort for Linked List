@@ -1,0 +1,158 @@
+import java.util.*;
+
+class Solution {
+    public static Node mergesort(Node head){
+        //Write your code here
+        // find the middle of the list
+        if(head == null || head.next == null){
+            return head;
+        }
+    // Node temp = head;
+     Node fp = head;
+     Node sp = head;
+        while(fp != null && fp.next != null && fp.next.next != null){
+            fp = fp.next.next;
+            sp = sp.next;
+        }
+        //return sp;
+
+        //sort the ll left part and right part
+         //public static Node mergesortq = (Node head){
+            
+            Node middle = sp;
+            Node lefthand = head;
+            Node righthand= middle.next;
+            middle.next = null;
+
+          Node  lefthead = mergesort(lefthand);
+           Node righthead = mergesort(righthand);
+
+           return mergeTwoSoetedll(lefthead,righthead);
+    }
+  
+            //Node finalhead = mergeTwoSoetedll(lefthead,righthead);
+           // return finalhead;
+
+        // }
+// sort the two sorted LinkedList
+        public static Node mergeTwoSoetedll(Node lefthead,Node righthead){
+    
+            Node dummy = new Node(-1);
+            Node temp = dummy;
+            Node temp1 = lefthead;
+            Node temp2 = righthead;
+            while(temp1 != null && temp2 != null){
+                if( temp1.data <= temp2.data){
+                    temp.next = temp1;
+                    temp1 = temp1.next;
+                }else{
+                    temp.next = temp2;
+                    temp2 = temp2.next;
+                }
+                temp = temp.next;
+            }
+            if(temp1 != null){
+                temp.next = temp1;
+            }else{
+                temp.next = temp2;
+            }
+            return dummy.next;    
+        }
+
+    }
+
+
+
+class Node{
+    int data;
+    Node next = null;
+    Node(int data){
+        this.data = data;
+        next = null;
+    }
+}
+class LinkedList{
+    Node head;
+    void add(int data){
+        Node new_node = new Node(data);
+        if(head == null){
+            head = new_node;
+            return;
+        }
+        Node curr = head;
+        while(curr.next != null)
+            curr = curr.next;
+        curr.next = new_node;
+    }
+}
+public class Main {
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+        int n = input.nextInt();
+        LinkedList a = new LinkedList();
+        for(int i = 0; i < n; i++){
+            a.add(input.nextInt());
+        }
+        Solution Obj = new Solution();
+        a.head = Obj.mergesort(a.head);
+        Node h = a.head;
+        while(h != null){
+            System.out.print(h.data + " ");
+            h = h.next;
+        }
+    }
+}
+
+
+// QUESTION
+Given a linked list of n nodes, the task is to sort the given linked list using Merge Sort.
+
+Input Format
+First line contains an integer n, which is the number of nodes
+
+Second line contains n space separated integers
+
+Output Format
+Print the sorted list
+
+Example 1
+Input
+
+5
+3 5 2 4 1
+Output
+
+1 2 3 4 5
+Explanation:
+
+The sorted array is 1 2 3 4 5
+
+Example 2
+Input
+
+6
+3 5 2 4 1 6
+Output
+
+1 2 3 4 5 6
+Explanation:
+
+The sorted array is 1 2 3 4 5 6
+
+Constraints
+1 <= n <= 105
+
+1 <= node.data <= 103
+
+Topics
+Recursion
+Sorting
+Linked lists
+Companies
+Microsoft
+Accolite
+Adobe
+Amazon
+PayTM
+MAQ Software
+Veritas

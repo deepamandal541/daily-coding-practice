@@ -1,0 +1,78 @@
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+class Main {
+    public static void sqrt(int A) {
+        // your code here
+        if(A == 0 || A==1){
+            System.out.println(A);
+            return;
+        }
+        int lo = 0;
+        int hi = A;
+        int ans = 0;
+        while( lo <= hi){
+            int mid = lo+(hi -lo)/2;
+            long square = (long)mid*mid;
+            if (square == A){
+                System.out.println(mid);
+
+                return;
+            }else if(square > A){
+                hi = mid-1;
+            }else{
+                ans = mid;
+                lo = mid+1;
+            }
+        }
+        System.out.println(ans);
+
+    }
+
+  public static void main (String[] args)
+	{
+    Scanner sc = new Scanner(System.in);
+	    
+	  int A = sc.nextInt();
+	  
+    sqrt(A);
+		
+	}
+    
+}
+
+
+// QUESTION
+
+Given an integer x, find the square root of x.
+
+If x is not a perfect square, then return floor(√x).
+
+Expected Time Complexity: O(log N)
+Expected Auxiliary Space: O(1)
+
+Note: Try Solving the question without using sqrt Function.
+
+Input Format
+The only line contains an integer x.
+
+Output Format
+Print the square root of x.
+
+Example 1
+Input
+
+5
+Output
+
+2
+Explanation
+
+Since, 5 is not a perfect square, floor of square root of 5 is 2.
+
+Constraints
+1 ≤ x ≤ 10^7
+Topics
+Math
+Binary Search

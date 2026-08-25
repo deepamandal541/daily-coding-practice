@@ -1,0 +1,163 @@
+import java.util.*;
+
+public class Main {
+    public static int[] findPosition(int arr[], int n,int tar)
+    {
+        // Write code here       
+         int[] failure = {-1, -1};
+
+        if (arr.length == 0) {
+            return failure;
+        }
+
+        if (arr.length == 1 && arr[0] == tar) {
+            int[] x = {0, 0};
+            return x;
+        }
+
+        int lo = 0;
+        int hi = arr.length - 1;
+        int firstocc = -1;
+
+        // Find First Occurrence
+        while (lo <= hi) {
+            int mid = lo + (hi - lo) / 2;
+
+            if (arr[mid] == tar) {
+                firstocc = mid;
+                hi = mid - 1;
+            } else if (arr[mid] > tar) {
+                hi = mid - 1;
+            } else {
+                lo = mid + 1;
+            }
+        }
+
+        lo = 0;
+        hi = arr.length - 1;
+        int lastocc = -1;
+
+        // Find Last Occurrence
+        while (lo <= hi) {
+            int mid = lo + (hi - lo) / 2;
+
+            if (arr[mid] <= tar) {
+                if (arr[mid] == tar) lastocc = mid;
+                lo = mid + 1;
+            } else {
+                hi = mid - 1;
+            }
+        }
+
+        int[] ans = {firstocc, lastocc};
+        return ans;
+    }
+
+    public static void main(String[] args) {
+
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        int tar = sc.nextInt();   // changed here also
+        int array[] = new int[n];
+
+        for (int i = 0; i < n; i++) {
+            array[i] = sc.nextInt();
+        }
+
+        int result[] = findPosition(array, n, tar);
+        System.out.println(result[0] + " " + result[1]);
+    }
+}
+
+        
+            
+   /* public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n= sc.nextInt();
+        int k= sc.nextInt();
+        int array[] = new int[n];
+
+        for(int i=0; i<n; i++){
+            array[i]= sc.nextInt();
+        }
+        findPosition(array,n,k);
+    }*/
+
+
+
+// QUESTION
+
+Given an array of integers nums sorted in non-decreasing order, find the starting and ending position of a given target value.
+
+If target is not found in the array, print[-1, -1].
+
+You must write an algorithm with O(log n) runtime complexity.
+
+Input Format
+The first line contains two integers n (number of elements in the array) and target.
+
+The second line contains n integers (value of elements in the array).
+
+Output Format
+Print two space separated integers denoting the first and last index of target.
+
+Example 1
+Input
+
+ 6 8
+ 5 7 7 8 8 10
+Output
+
+ 3 4
+Explanation
+
+8 occurs for the first time at index 3 and at index 4 for the last time.
+
+Example 2
+Input
+
+ 6 6
+ 5 7 7 8 8 10
+Output
+
+ -1 -1
+Explanation
+
+6 doesn't occur in the given array, hence we return -1 -1
+
+Constraints
+0 <= nums.length <= 10^5
+
+-10^9 <= nums[i] <= 10^9
+
+nums is a non-decreasing array.
+
+-10^9 <= target <= 10^9
+
+Topics
+Binary Search
+Arrays
+Companies
+Intuit
+Facebook
+ByteDance
+Amazon
+Twitter
+Qualtrics
+Tesla
+Shopee
+Bloomberg
+Nutanix
+Oracle
+Adobe
+Flipkart
+Apple
+Uber
+Snapchat
+Google
+Microsoft
+LinkedIn
+Audible
+Netflix
+Yandex
+Quip(Salesforce)

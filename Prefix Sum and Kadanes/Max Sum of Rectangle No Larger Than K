@@ -1,0 +1,108 @@
+import java.util.*;
+
+class Solution {
+    public int maxSumSubmatrix(int[][] matrix, int k) {
+        //Write code here
+        int ans=Integer.MIN_VALUE;
+       int n=matrix.length,m=matrix[0].length;
+
+
+       for(int r1=0;r1<n;r1++){
+           for(int c1=0;c1<m;c1++){
+               int [][]pre=new int[n][m];
+               for(int r2=r1;r2<n;r2++){
+                   for(int c2=c1;c2<m;c2++){
+                       int top=0,left=0,diagonal=0;
+                       if(r2>0) top=pre[r2-1][c2];
+                       if(c2>0) left=pre[r2][c2-1];
+                       if(r2>0 && c2>0) diagonal=pre[r2-1][c2-1];
+                       pre[r2][c2]=top+left-diagonal+matrix[r2][c2];
+                       if(pre[r2][c2]<=k){
+                           ans=Math.max(pre[r2][c2],ans);
+                       }
+                   }
+               }
+           }
+       }
+       return ans;
+
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int m, n;
+        m = sc.nextInt();
+        n = sc.nextInt();
+        int[][] matrix = new int[m][n];
+        for (int i = 0; i < m; i++) {
+            for (int j = 0; j < n; j++)
+                matrix[i][j] = sc.nextInt();
+        }
+        int k;
+        k = sc.nextInt();
+        Solution Obj = new Solution();
+        System.out.println(Obj.maxSumSubmatrix(matrix, k));
+        sc.close();
+    }
+}
+
+//QUESTIO
+Given an m x n matrix matrix and an integer k, return the max sum of a rectangle in the matrix such that its sum is no larger than k.
+
+It is guaranteed that there will be a rectangle with a sum no larger than k.
+
+Input Format
+The First line contains m and n representing the dimensions of the matrix.
+
+Next m lines contain n spaced integers representing the matrix.
+
+The last line contains k.
+
+Output Format
+Return the max sum of a rectangle in the matrix such that its sum is no larger than k.
+
+Example 1
+Input
+
+2 3
+1 0 1
+0 -2 3
+2
+Output
+
+2
+Explanation
+
+Because the sum of the rectangle [[0, 1], [-2, 3]] is 2, and 2 is the max number no larger than k (k = 2).
+
+Example 2
+Input
+
+1 3
+2 2 -1
+3
+Output
+
+3
+Explanation
+
+Because the sum of the rectangle [[2, 2, -1]] is 3, and 3 is the max number no larger than k (k = 3).
+
+Constraints
+m == matrix.length
+
+n == matrix[i].length
+
+1 <= m, n <= 100
+
+-100 <= matrix[i][j] <= 100
+
+-10^5 <= k <= 10^5
+
+Topics
+Binary Search
+2D-Arrays
+Arrays
+Prefix Sum

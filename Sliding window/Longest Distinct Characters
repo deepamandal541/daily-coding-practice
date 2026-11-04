@@ -1,0 +1,85 @@
+import java.io.*;
+import java.util.*;
+
+class Solution {
+    public static int longestUniqueSubsttr(String s)
+    {
+        // Your code here
+        int left=0,right=0,ans=0;
+       HashSet<Character> hs = new HashSet<>();
+
+
+       while(right<s.length()){
+           //contraction
+           while(hs.contains(s.charAt(right))){
+               hs.remove(s.charAt(left));
+               left++;
+           }
+
+
+           //expansion
+           hs.add(s.charAt(right));
+           ans=Math.max(ans,right-left+1);
+           right++;
+       }
+       return ans;
+
+    }
+}
+
+public class Main {
+     public static void main(String[] args)
+    {
+        Scanner sc = new Scanner(System.in);
+        String str = sc.next();
+        Solution obj = new Solution();
+        int len = obj.longestUniqueSubsttr(str);
+        System.out.println(len);
+    }
+}
+
+
+
+//QUESTION
+Given a string str, find length of the longest substring with all distinct characters.
+
+Input Format
+Input consists of one line
+
+The first line is a string str.
+
+Output Format
+Length of longest substring with all distinct characters
+
+Example 1
+Input
+
+geeksforgeeks
+Output
+
+7
+Explanation
+
+eksforg is the longest substring with all distinct characters.
+
+Example 2
+Input
+
+aaa
+Output
+
+1
+Explanation
+
+a is the longest substring with all distinct characters.
+
+Constraints
+1 <= |S| <= 105
+
+Topics
+Strings
+Sliding Window
+Companies
+Microsoft
+Adobe
+Amazon

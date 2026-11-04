@@ -1,0 +1,100 @@
+import java.io.*;
+import java.util.*;
+class Solution {
+    public boolean compare(int []freq_s,int []freq_t){
+       for(int i=0;i<256;i++){
+           if(freq_s[i]<freq_t[i]) return false;
+       }
+       return true;
+   }
+    public String minWindow(String s, String t) {
+		// write code here
+        int []freq_s=new int[256];
+       int []freq_t=new int[256];
+
+
+       for(int i=0;i<t.length();i++){
+           freq_t[t.charAt(i)]++;
+       }
+
+
+       int l=0,r=0,min_length=Integer.MAX_VALUE,min_length_start=-1;
+
+
+       while(r<s.length()){
+           freq_s[s.charAt(r)]++;
+           while(compare(freq_s,freq_t)==true){
+               //contraction
+               if(r-l+1<min_length){
+                   min_length=r-l+1;
+                   min_length_start=l;
+               }
+               freq_s[s.charAt(l)]--;
+               l++;
+           }
+ r++;
+       }
+       if(min_length_start==-1) return "";
+       return s.substring(min_length_start,min_length_start+min_length);
+
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        String s,t;
+        s = sc.next();
+		t = sc.next();
+        Solution Obj = new Solution();
+        System.out.print(Obj.minWindow(s,t));
+    }
+}
+
+//QUESTION
+Given two strings s and t of lengths m and n respectively, return the minimum window substring of s such that every character in t (including duplicates) is included in the window. If there is no such substring, return the empty string "".
+
+The testcases will be generated such that the answer is unique.
+
+Input Format
+First line of input denotes string s
+
+Second line of input denotes string t
+
+Output Format
+You have to return minimum window substring
+
+Example 1
+Input
+
+ADOBECODEBANC
+ABC
+Output
+
+BANC
+Explanation
+
+The minimum window substring "BANC" includes 'A', 'B', and 'C' from string t.
+
+Example 2
+Input
+
+a
+a
+Output
+
+a
+Explanation
+
+The entire string s is the minimum window.
+
+Constraints
+1 <= s.length, t.length <= 1e5
+Topics
+Sliding Window
+2-Pointers
+Hashing
+Strings
+Companies
+Streamoid Technologies
+Media.net

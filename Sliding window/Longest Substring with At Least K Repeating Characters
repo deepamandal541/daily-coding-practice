@@ -1,0 +1,92 @@
+import java.util.*;
+class Solution {
+   public int helper(String s){
+       HashSet<Character> hs=new HashSet<>();
+       for(int i=0;i<s.length();i++){
+           hs.add(s.charAt(i));
+       }
+       return hs.size();
+   }
+   public int longestSubstring(String s, int k) {
+       // write code here
+       int totalUnique=helper(s);
+       int ans=0;
+       for(int currUnique=1;currUnique<=totalUnique;currUnique++){ //26
+           int left=0,right=0,unique=0,countAtLeastK=0;
+           int []freq=new int[26];
+           while(right<s.length()){ // O(n)
+               //expansion
+ if(unique<=currUnique){
+                   if(freq[s.charAt(right)-'a']==0) unique++;
+                   freq[s.charAt(right)-'a']++;
+                   if(freq[s.charAt(right)-'a']==k) countAtLeastK++;
+                   right++;
+               }else{
+                   //contraction
+                   if(freq[s.charAt(left)-'a']==k) countAtLeastK--;
+                   freq[s.charAt(left)-'a']--;
+                   if(freq[s.charAt(left)-'a']==0) unique--;
+                   left++;
+               }
+               if(unique==currUnique &&unique==countAtLeastK){
+                   ans=Math.max(ans,right-left);
+               }
+           }
+       }
+       return ans;
+   }
+}
+
+
+public class Main {
+   public static void main(String[] args) {
+       Scanner scn = new Scanner(System.in);
+       String str = scn.next();
+       int k = scn.nextInt();
+Solution Obj =  new Solution();
+       System.out.println(Obj.longestSubstring(str,k));
+   }
+}
+
+
+//QUESTION
+You are given a string str and a number k. You are required to find the length of the longest substring such that the frequency of each character in the substring is atleast k.
+
+Input Format
+The first line of the input contains the string str.
+
+The second line of the input consists of the number k.
+
+Output Format
+The only integer in the output represents the length of the longest substring satisfying the specified condition.
+
+Example 1
+Input
+
+xxxyy
+3
+Output
+
+3
+Explanation: The longest substring is "xxx", as 'x' is repeated 3 times.
+
+Example 2
+Input
+
+xyxyyz
+2
+Output
+
+5
+Explanation: The longest substring is "xyxyy", as 'x' is repeated 2 times and 'y' is repeated 3 times.
+
+Constraints:
+1 <= str.length <= 10^4
+str consists of only lowercase English letters.
+1 <= k <= 10^5
+
+Topics
+Strings
+Sliding Window
+Companies
+Amazon
